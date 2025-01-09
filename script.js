@@ -3,7 +3,8 @@ const apiUrl = 'https://api.allorigins.win/get?url=https://quotes.toscrape.com/r
 // Function to fetch and display a random quote
 const displayRandomQuote = async () => {
     try {
-        const response = await fetch(apiUrl);
+        // Add a unique cache-busting parameter to the API URL
+        const response = await fetch(`${apiUrl}&timestamp=${new Date().getTime()}`);
         const data = await response.json();
 
         // Parse the HTML content from the response
